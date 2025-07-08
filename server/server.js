@@ -15,7 +15,7 @@ connectDB()
 
 // middleware
 app.use(cors({
-    origin: "https://book-store-frontend-850j.onrender.com",
+    origin: "https://bookverse-ucuj.onrender.com",
     credentials: true
 }));
 app.use(express.json());
