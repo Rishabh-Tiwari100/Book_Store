@@ -8,8 +8,6 @@ import { MdDelete } from "react-icons/md";
 import Confirmation from "../components/Confirmation";
 import { addToFavourite } from "../features/favourite/FavouriteService";
 import { toast } from "react-toastify";
-import { set } from "mongoose";
-
 const BookDetails = () => {
   const [openModal, setOpenModal] = useState(false);
   const { book } = useSelector((state) => state.books);
