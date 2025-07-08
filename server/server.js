@@ -15,7 +15,7 @@ connectDB()
 
 // middleware
 app.use(cors({
-    origin: process.env.CLIENT_URL,
+    origin: "https://book-store-frontend-850j.onrender.com",
     credentials: true
 }));
 app.use(express.json());
