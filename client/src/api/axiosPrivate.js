@@ -4,7 +4,7 @@ import axiosInstance from "./axios";
 import { getAccessToken, setAccessToken } from "./tokenService";
 
 const axiosPrivate = axios.create({
-  baseURL: "http://localhost:5000/api/v1",
+  baseURL: "https://book-store-4qen.onrender.com/api/v1",
   withCredentials: true,
 });
 
