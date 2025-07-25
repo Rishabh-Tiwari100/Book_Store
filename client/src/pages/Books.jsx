@@ -11,7 +11,7 @@ const Books = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className="p-2">
       <h1 className="text-2xl font-bold">All Books</h1>
       <div className="grid sm:grid-cols-2 md:grid-cols-4 m-2">
         {books && books.map((book) => <Card key={book._id} book={book} />)}

@@ -86,7 +86,7 @@ const Cart = () => {
   };
 
   return (
-    <div>
+    <div className="p-2">
       <h1 className="text-2xl font-bold">Cart</h1>
       <div className="grid sm:grid-cols-2 md:grid-cols-4 m-2">
         {cart &&

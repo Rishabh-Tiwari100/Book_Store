@@ -27,7 +27,7 @@ const Home = () => {
               online and get them delivered to your doorstep
             </p>
           </div>
-          <div className="mt-10">
+          <div className="mt-10 p-2">
             <h4 className="text-2xl font-bold">Recently Added</h4>
             <div className="grid sm:grid-cols-2 md:grid-cols-4 m-2">
               {books &&

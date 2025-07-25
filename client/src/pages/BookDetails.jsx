@@ -80,13 +80,13 @@ const BookDetails = () => {
             <div className="flex flex-col md:flex-row justify-center gap-6 items-center">
               <button
                 onClick={() => dispatch(addToFavourite(book))}
-                className="bg-pink-500 text-white px-6 py-2 rounded-lg shadow transition-transform hover:scale-105 active:scale-95"
+                className="cursor-pointer bg-pink-500 text-white px-6 py-2 rounded-lg shadow transition-transform hover:scale-105 active:scale-95"
               >
                 Add to Favourite
               </button>
               <button
                 onClick={handleAddToCart}
-                className="bg-gradient-to-r from-violet-500 via-sky-500 to-pink-500 text-white font-semibold px-6 py-2 rounded-full shadow transition-transform hover:scale-105 active:scale-95"
+                className="cursor-pointer bg-gradient-to-r from-violet-500 via-sky-500 to-pink-500 text-white font-semibold px-6 py-2 rounded-full shadow transition-transform hover:scale-105 active:scale-95"
               >
                 Add to Cart
               </button>
@@ -98,13 +98,13 @@ const BookDetails = () => {
             <div className="flex justify-center gap-6">
               <button
                 onClick={() => navigate(`/admin/books/edit/${id}`)}
-                className="flex items-center gap-2 px-6 py-3 bg-blue-500 text-white rounded-xl shadow hover:bg-blue-600"
+                className="cursor-pointer flex items-center gap-2 px-6 py-3 bg-blue-500 text-white rounded-xl shadow hover:bg-blue-600"
               >
                 <FaEdit /> Edit Book
               </button>
               <button
                 onClick={() => setOpenModal(true)}
-                className="flex items-center gap-2 px-6 py-3 bg-red-500 text-white rounded-xl shadow hover:bg-red-600"
+                className="cursor-pointer flex items-center gap-2 px-6 py-3 bg-red-500 text-white rounded-xl shadow hover:bg-red-600"
               >
                 <MdDelete /> Delete Book
               </button>

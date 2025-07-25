@@ -43,7 +43,6 @@ function App() {
         {/* Public routes without Navbar */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/book/:id" element={<BookDetails />} />
 
         {/* Public routes with Navbar */}
         <Route element={<PublicRoute />}>
@@ -51,6 +50,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/books" element={<Books />} />
+        <Route path="/book/:id" element={<BookDetails />} />
         </Route>
 
         {/* Private routes */}

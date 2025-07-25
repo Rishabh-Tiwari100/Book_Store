@@ -1,17 +1,23 @@
-import React, { useState, } from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../features/auth/AuthServices";
 import { toast } from "react-toastify";
+import * as Yup from "yup";
 const Login = () => {
-  const {isLoading, error } = useSelector((state) => state.auth);
+  const { isLoading } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
+  });
+
+  const validationSchema = Yup.object().shape({
+    email: Yup.string().email("Invalid email").required("Email is required"),
+    password: Yup.string().required("Password is required"),
   });
 
   const handleChange = (e) => {
@@ -20,19 +26,23 @@ const Login = () => {
     setFormData(data);
   };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  try {
-    await dispatch(login(formData)).unwrap();
-    navigate("/home");
-    toast.success("Login successful!");
-  } catch (error) {
-    console.log(error);
-    toast.error(error);
-  }
-};
-
+    try {
+      await validationSchema.validate(formData, { abortEarly: false });
+      await dispatch(login(formData)).unwrap();
+      navigate("/home");
+      toast.success("Login successful!");
+    } catch (error) {
+      if (error instanceof Yup.ValidationError) {
+        toast.error(error.errors[0]);
+        return;
+      }
+      console.log(error);
+      toast.error(error);
+    }
+  };
 
   return (
     <div className="flex min-h-svh flex-col items-center justify-center">
