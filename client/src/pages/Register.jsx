@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { register } from "../features/auth/AuthServices";
+import * as Yup from "yup";
 const Register = () => {
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
@@ -11,6 +12,12 @@ const Register = () => {
   });
 
   const [preview, setPreview] = useState(null);
+
+  const validationSchema = Yup.object().shape({
+    name: Yup.string().required("Name is required"),
+    email: Yup.string().email("Invalid email").required("Email is required"),
+    password: Yup.string().required("Password is required"),
+  });
 
   useEffect(() => {
     if (formData.avatar) {
@@ -41,13 +48,18 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { name, email, password, avatar } = formData;
-    const registerData = new FormData();
-    registerData.append("name", name);
-    registerData.append("email", email);
-    registerData.append("password", password);
-    if (avatar) registerData.append("avatar", avatar);
-    dispatch(register(registerData)); 
+    try {
+      validationSchema.validateSync(formData, { abortEarly: false });
+      const { name, email, password, avatar } = formData;
+      const registerData = new FormData();
+      registerData.append("name", name);
+      registerData.append("email", email);
+      registerData.append("password", password);
+      if (avatar) registerData.append("avatar", avatar);
+      dispatch(register(registerData));
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
